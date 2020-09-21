@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using GenericProject.BakgroundServices;
 using Serilog;
 
 namespace GenericProject
@@ -50,6 +52,8 @@ namespace GenericProject
                 })
                 .ConfigureServices((hostingContext, services) =>
                 {
+                    services.AddHostedService<StatRetrieverService>();
+                    services.AddHostedService<StatPublisherService>();
                 });
         }
     }
